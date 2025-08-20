@@ -5,13 +5,13 @@ let activeCube = null;
 let offsetX = 0;
 let offsetY = 0;
 
-// Position cubes initially in a grid
+// Initial positions in grid
 cubes.forEach((cube, index) => {
-  let row = Math.floor(index / 3);
-  let col = index % 3;
-  cube.style.left = `${col * 160 + 20}px`; // 100px size + 20px gap
-  cube.style.top = `${row * 160 + 20}px`;
-  
+  let row = Math.floor(index / 2);
+  let col = index % 2;
+  cube.style.left = `${col * 120 + 20}px`;
+  cube.style.top = `${row * 120 + 20}px`;
+
   cube.addEventListener("mousedown", (e) => {
     activeCube = cube;
     offsetX = e.clientX - cube.offsetLeft;
@@ -24,7 +24,7 @@ document.addEventListener("mousemove", (e) => {
     let newX = e.clientX - offsetX;
     let newY = e.clientY - offsetY;
 
-    // Boundary conditions
+    // boundaries
     const maxX = container.clientWidth - activeCube.clientWidth;
     const maxY = container.clientHeight - activeCube.clientHeight;
 
